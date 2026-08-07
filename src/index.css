@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto Mono", sans-serif;
+}
+
+body {
+  background-color: gray;
+}
