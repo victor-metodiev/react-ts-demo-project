@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CatalogListing } from "../components/CatalogListing";
 import { Spinner } from "../components/Spinner";
+import { Pagination } from "../components/Pagination";
 
 export type Post = {
   userId: number;
@@ -34,6 +35,7 @@ export const Catalog = () => {
     <div className="flex flex-col gap-6 items-center my-14">
       <h2 className="font-bold text-3xl text-white">Posts</h2>
       {isLoading ? <Spinner /> : <CatalogListing posts={posts} />}
+      <Pagination />
     </div>
   );
 };
