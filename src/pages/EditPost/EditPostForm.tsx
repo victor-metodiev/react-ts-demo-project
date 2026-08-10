@@ -105,7 +105,7 @@ export const EditPostForm = ({ post }: { post: Post }) => {
             rows={5}
             value={form.description}
             onChange={handleFormValueChange}
-            placeholder="Write your post content here..."
+            placeholder="Write your post description here..."
             className="bg-slate-900 border border-slate-700 focus:border-blue-500 text-white px-4 py-2.5 rounded-lg outline-none transition text-sm resize-none leading-relaxed"
           />
           {formErrors.description.map((error, index) => (

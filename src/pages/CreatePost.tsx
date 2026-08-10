@@ -103,7 +103,7 @@ export const CreatePost = () => {
             rows={4}
             value={form.description}
             onChange={handleFormValueChange}
-            placeholder="Write your post content..."
+            placeholder="Write your post description here..."
             className="px-3 py-2 bg-slate-900 border border-slate-700 rounded focus:outline-none focus:border-blue-500 text-white resize-none"
           />
           {formErrors.description.map((error, index) => (
