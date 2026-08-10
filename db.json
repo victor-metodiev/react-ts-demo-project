@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$YC3E7lEz3LevWEWcI241KuUCO0KSZfhgz.BOxkZaPXs2.EW1ldFAm",
+      "username": "testUser",
+      "firstName": "test",
+      "lastName": "user",
+      "createdAt": "2026-08-09T15:02:31.452Z",
+      "id": 1
+    },
+    {
+      "email": "fsda@abv.bg",
+      "password": "$2a$10$hOp.EpBtSFxtghQpwOWGdufIv/7jRiPPWdMLXvReSL.tQsLtENKzm",
+      "username": "tsadf",
+      "firstName": "fsda",
+      "lastName": "fsdaf",
+      "createdAt": "2026-08-10T11:41:29.168Z",
+      "id": 2
+    },
+    {
+      "email": "user@gmail.com",
+      "password": "$2a$10$.7LFAwvu33LK7b6sPX/zL.04PlJkACK3hr3ATn4VHgerxzJeImAg2",
+      "username": "dffsad",
+      "firstName": "sdaf",
+      "lastName": "fsdf",
+      "createdAt": "2026-08-10T12:45:17.741Z",
+      "id": 3
+    },
+    {
+      "email": "user12321@gmail.com",
+      "password": "$2a$10$TdR38bXN91SZXi75mUea6.fHhCezn8QIq8bIZmgHd8P9jMei2Uape",
+      "username": "fdasfds",
+      "firstName": "fsdafs",
+      "lastName": "fsadf",
+      "createdAt": "2026-08-10T12:47:31.953Z",
+      "id": 4
+    },
+    {
+      "email": "tes@abv.bg",
+      "password": "$2a$10$tPl9kkibIDCYkokFTP7A6unEjnIP9m/JCYwtKEuBOonzVL09QFioq",
+      "username": "fsdaf",
+      "firstName": "fasdfsd",
+      "lastName": "afsdfsd",
+      "createdAt": "2026-08-10T14:27:03.149Z",
+      "id": 5
+    },
+    {
+      "email": "24323@abv.b",
+      "password": "$2a$10$rUxorzxXQeax3UiQAQJrPuZKbuit7TOkrKK6c94vqYjxdteMu9ifu",
+      "username": "gdfsg",
+      "firstName": "dsfg",
+      "lastName": "sdgfg",
+      "createdAt": "2026-08-10T15:47:12.389Z",
+      "id": 6
+    }
+  ],
+  "posts": [
+    {
+      "id": "3fb92220-7222-42c0-85f7-e785d01b67a7",
+      "title": "test title",
+      "description": "test desc",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-09T15:03:00.899Z"
+    },
+    {
+      "id": "0ea50e3e-54c7-4050-b093-aabadf4b6fa6",
+      "title": "tes f",
+      "description": "fsdaf",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-09T15:04:14.922Z"
+    },
+    {
+      "id": "b8925e77-8345-4c70-b830-e36f864d8979",
+      "title": "fsdafasd",
+      "description": "fsadf as",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-09T15:04:18.283Z"
+    },
+    {
+      "id": "e52091a4-1ca9-474c-9e9a-4b41266ed54a",
+      "title": "fsadfs",
+      "description": "fsadfsd",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-09T15:04:20.643Z"
+    },
+    {
+      "id": "39a6aeb9-5630-440c-af05-46d420cb911d",
+      "title": "fsdafsadf",
+      "description": "fsdaf sdaf sadf sdakjf lhsdakljf hsdakjfh kasdlhf sdahlkf hasdkf hasdklf hskadlhfk sadhf klasdhf klasdhfk lasdhkf ahsdkf lsd",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-09T15:04:29.171Z"
+    },
+    {
+      "id": "678fe2ea-210d-4e71-ad76-f6f34c966e9a",
+      "title": "Real post title",
+      "description": "This is my new post in which I will explain...",
+      "userId": 1,
+      "authorName": "test@gmail.com",
+      "createdAt": "2026-08-10T11:27:29.442Z"
+    },
+    {
+      "id": "1a1cc1cb-c5ae-40eb-9e96-aed929335b5f",
+      "title": "Real post",
+      "description": "Here is a real post",
+      "userId": 1,
+      "authorName": "test user",
+      "createdAt": "2026-08-10T11:46:50.270Z"
+    },
+    {
+      "id": "219f0c57-9cc5-4a62-a7b3-74eae63e7f3e",
+      "title": "zzzzzzzzzz",
+      "description": "zzz",
+      "userId": 1,
+      "authorName": "test user",
+      "createdAt": "2026-08-10T12:35:22.670Z"
+    },
+    {
+      "id": "0dacd133-400e-4618-8765-cd12c8eae6a2",
+      "title": "gdfsg",
+      "description": "gdfsgdf",
+      "userId": "1",
+      "authorName": "test user",
+      "createdAt": "2026-08-10T15:46:57.555Z"
+    },
+    {
+      "id": "e94822c2-960a-4dcb-8dd2-01297f23377c",
+      "title": "fsadfsd",
+      "description": "fsdafasdf",
+      "userId": "6",
+      "authorName": "dsfg sdgfg",
+      "createdAt": "2026-08-10T15:47:32.691Z"
+    },
+    {
+      "id": "74462db0-c501-4573-9411-ed98b92f0043",
+      "title": "teasfd af",
+      "description": "f sadf asdf sd",
+      "userId": "1",
+      "authorName": "test user",
+      "createdAt": "2026-08-10T15:48:02.650Z"
+    }
+  ]
+}
