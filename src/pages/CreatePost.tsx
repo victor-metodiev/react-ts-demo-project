@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePost } from "../context/postContext";
 
 type FormErrors = {
   title: string[];
@@ -8,14 +9,19 @@ type FormErrors = {
 
 export const CreatePost = () => {
   const [form, setForm] = useState({ title: "", description: "" });
-  const [formError, setFormErrors] = useState<FormErrors>({
+  const [formErrors, setFormErrors] = useState<FormErrors>({
     title: [],
     description: [],
   });
+  const [serverError, setServerError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const { addPost } = usePost();
   const navigate = useNavigate();
 
-  const handleFormValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFormValueChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     setFormErrors((prev) => ({ ...prev, [name]: [] }));
@@ -23,6 +29,7 @@ export const CreatePost = () => {
 
   const onFormSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setServerError(null);
 
     const title = form.title.trim();
     const description = form.description.trim();
@@ -41,74 +48,79 @@ export const CreatePost = () => {
       return;
     }
 
-    try {
-      await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        body: JSON.stringify({
-          title: title,
-          body: description,
-          userId: 1,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
+    setIsSubmitting(true);
 
-      setForm(() => ({ title: "", description: "" }));
+    try {
+      await addPost({ title, description });
+      setForm({ title: "", description: "" });
       navigate("/");
     } catch (error) {
-      console.error(
-        "Error occured while trying to create a new post. Error: ",
-        error,
-      );
+      if (error instanceof Error) {
+        setServerError(error.message);
+      }
+
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <form
-      onSubmit={onFormSubmit}
-      className="flex flex-col gap-4 my-14 w-135 mx-auto"
-    >
-      <div className="flex flex-col gap-1 opacity-80">
-        <span>Title</span>
-        <input
-          type="text"
-          name="title"
-          value={form.title}
-          onChange={handleFormValueChange}
-          className="border px-3 py-2 rounded-xl outline-none"
-        />
-        <div className="flex flex-col gap-1">
-          {formError.title.map((error, index) => (
-            <span key={index} className="text-red-500 text-sm">
-              {error}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="flex flex-col gap-1 opacity-80">
-        <span>Description</span>
-        <input
-          type="text"
-          name="description"
-          value={form.description}
-          onChange={handleFormValueChange}
-          className="border px-3 py-2 rounded-xl outline-none"
-        />
-        <div className="flex flex-col gap-1">
-          {formError.description.map((error, index) => (
-            <span key={index} className="text-red-500 text-sm">
-              {error}
-            </span>
-          ))}
-        </div>
-      </div>
-      <button
-        type="submit"
-        className="border px-3 py-2 rounded-xl bg-blue-600 border-blue-800 outline-none text-white hover:cursor-pointer hover:bg-blue-500 hover:border-blue-600"
+    <div className="flex flex-col items-center justify-center my-16 px-4">
+      <form
+        onSubmit={onFormSubmit}
+        className="flex flex-col gap-4 w-full max-w-md bg-slate-800 p-6 rounded-xl border border-blue-900 shadow-md text-white"
       >
-        Create
-      </button>
-    </form>
+        <h2 className="text-2xl font-bold text-center">Create Post</h2>
+
+        {serverError && (
+          <div className="bg-red-500/20 border border-red-500 text-red-300 text-sm p-3 rounded text-center">
+            {serverError}
+          </div>
+        )}
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-300">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={form.title}
+            onChange={handleFormValueChange}
+            placeholder="Enter post title"
+            className="px-3 py-2 bg-slate-900 border border-slate-700 rounded focus:outline-none focus:border-blue-500 text-white"
+          />
+          {formErrors.title.map((error, index) => (
+            <span key={index} className="text-red-400 text-xs">
+              {error}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-300">
+            Description
+          </label>
+          <textarea
+            name="description"
+            rows={4}
+            value={form.description}
+            onChange={handleFormValueChange}
+            placeholder="Write your post content..."
+            className="px-3 py-2 bg-slate-900 border border-slate-700 rounded focus:outline-none focus:border-blue-500 text-white resize-none"
+          />
+          {formErrors.description.map((error, index) => (
+            <span key={index} className="text-red-400 text-xs">
+              {error}
+            </span>
+          ))}
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="mt-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold py-2 rounded transition cursor-pointer"
+        >
+          {isSubmitting ? "Creating..." : "Publish Post"}
+        </button>
+      </form>
+    </div>
   );
 };
