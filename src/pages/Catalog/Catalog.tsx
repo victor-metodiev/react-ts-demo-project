@@ -10,6 +10,26 @@ export const Catalog = () => {
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const { posts, isLoading } = usePost();
+  // const [authorNames, setAuthorNames] = useState<string[]>([]);
+
+  // posts.map((post) => {
+  //   // "test", "test 1", "test 2"
+  //   if (!authorNames.includes(post.authorName)) {
+  //     setAuthorNames((prev) => {
+  //       console.log("prev", prev);
+  //       return [...prev, post.authorName];
+  //     });
+  //   }
+
+  //   console.log("authorNames", authorNames);
+  // });
+
+  const result: string[] = [];
+  posts.map((post) => {
+    if (!result.includes(post.authorName)) {
+      result.push(post.authorName);
+    }
+  });
 
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
@@ -68,11 +88,25 @@ export const Catalog = () => {
     );
   };
 
+  const handleFilter = () => {};
+
   return (
     <div className="flex flex-col items-center mx-4 w-auto md:w-250 md:mx-auto my-12 gap-8">
       <div className="text-center flex flex-col gap-2">
         <h2 className="font-bold text-3xl text-white">Posts</h2>
       </div>
+      <select
+        name="posts-filter"
+        id="posts-filter"
+        onChange={(e) => console.log(e.target.value)}
+      >
+        <option value="">--Please choose an option--</option>
+        {result.map((name, index) => (
+          <option key={index} value={`${name}`}>
+            {name}
+          </option>
+        ))}
+      </select>
       <div className="w-full max-w-md">
         <input
           type="text"

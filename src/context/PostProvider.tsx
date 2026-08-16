@@ -18,7 +18,7 @@ export const PostProvider = ({ children }: PostProviderProps) => {
   const { user, token } = useAuth();
 
   useEffect(() => {
-    let isMounted = true;
+    // let isMounted = true;
 
     fetch(`${BASE_URL}/posts`)
       .then((response) => {
@@ -29,16 +29,16 @@ export const PostProvider = ({ children }: PostProviderProps) => {
         return response.json();
       })
       .then((data) => {
-        if (isMounted) {
-          const validatedPosts = postsArraySchema.parse(data);
-          setPosts(validatedPosts);
-          setIsLoading(false);
-        }
+        // if (isMounted) {
+        const validatedPosts = postsArraySchema.parse(data);
+        setPosts(validatedPosts);
+        setIsLoading(false);
+        // }
       });
 
-    return () => {
-      isMounted = false;
-    };
+    // return () => {
+    //   isMounted = false;
+    // };
   }, []);
 
   const findPostById = (id: string) => {
