@@ -68,6 +68,8 @@ export const Catalog = () => {
       );
     }
 
+    console.log("test");
+
     return (
       <>
         <CatalogListing
